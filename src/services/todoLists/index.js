@@ -9,7 +9,6 @@ import { reorderTodoList} from "./reorderTodoList.js";
 
 export const todoLists = new Router();
 
-// todoLists.get("/", getAllTodoLists);
 todoLists.get("/", getAllTodoLists);
 todoLists.post("/", createTodoList);
 todoLists.get("/:id", getOneTodoList);

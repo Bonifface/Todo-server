@@ -24,22 +24,10 @@ const getBulkNewTodos = (newTodos) =>
 
 export const reorderTodoList = async (req, res) => {
   try {
-    const { id,todos, fromIndex, toIndex } = req.body;
-
-
-    // const todoss = await todo.find(
-    //   { id: id },
-    //   { text: true, active: true, position: true }
-    // );
-    console.log(todos);
-    // console.log(todoss)
-
+    const { id, todos, fromIndex, toIndex } = req.body;
     const newPositions = getNewTodos(todos, fromIndex, toIndex);
-    // console.log(newPositions)
     const bulkNewTodos = getBulkNewTodos(newPositions);
-
     await todo.bulkWrite(bulkNewTodos);
-
     const newTodos = await todo.find(
       { id: id },
       { text: true, active: true, position: true }
